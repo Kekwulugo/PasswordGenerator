@@ -4,6 +4,11 @@ Have you ever wanted to to quickly generate strong and secure password? This pro
 
 ## Installation
 You can copy the files in this respository and run the program directly in the browser with a sleek and simple user interface
+
+## Technology Used
+HTML
+CSS
+JavaScript
 ## Credits
 Starter Code Courtesty of Edward Apostol and the Skill Hat DTTP Web Development Program 2024
 
