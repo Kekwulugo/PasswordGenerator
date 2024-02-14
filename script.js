@@ -91,13 +91,15 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 let charLength = "";
 function getPasswordOptions() {
-
-  charLength = prompt("How many characters should the password contain");
-  window.alert("Click OK to confirm use of lowercase characters the use of special characters, uppercase and lowercase characters");
-  
-  console.log(charLength);
- 
-}
+  charLength = prompt("How many characters should your password contain?");
+  if (charLength < 8 ||  charLength > 128){
+    window.alert("Please try again, enter a value between 8 and 128");
+    charLength = null;
+  }
+    else {
+    window.confirm("Click OK to confirm use of lowercase characters the use of special characters, uppercase and lowercase characters");
+    } 
+  }
 
 
 // Function for getting a random element from an array
@@ -105,14 +107,17 @@ function getRandom(arr) {
   return arr[Math.floor(Math.random()*arr.length)];
 }
 
-// Function to generate password with user input
-let password = [];
-function generatePassword() {
-  for (let i = 0; i < charLength;i++){
-    password.push(getRandom(lowerCasedCharacters));
-  };
 
- return password.join("");
+// Function to generate password with user input
+
+function generatePassword() {
+  getPasswordOptions();
+  let passwordArray = specialCharacters.concat(lowerCasedCharacters,numericCharacters,upperCasedCharacters)
+  let password = [];
+  for (let i = 0; i < charLength;i++){
+    password.push(getRandom(passwordArray));
+  };
+return password
 }
 
 
@@ -124,9 +129,11 @@ function writePassword() {
   var passwordNew = generatePassword();
   var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
+  passwordText.value = passwordNew.join("");
 }
 
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
