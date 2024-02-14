@@ -89,34 +89,44 @@ var upperCasedCharacters = [
 ];
 
 // Function to prompt user for password options
+let charLength = "";
 function getPasswordOptions() {
-  prompt("How many characters should the password contain");
-  prompt("Click OK to confirm use of lowercase characters");
-  prompt("Click OK to confirm the use of uppercase characters");
-  prompt("Click OK to confirm the use of special characters");
+
+  charLength = prompt("How many characters should the password contain");
+  window.alert("Click OK to confirm use of lowercase characters the use of special characters, uppercase and lowercase characters");
+  
+  console.log(charLength);
  
 }
 
+
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  return arr[Math.floor(Math.random()*arr.length)];
 }
 
 // Function to generate password with user input
+let password = [];
 function generatePassword() {
+  for (let i = 0; i < charLength;i++){
+    password.push(getRandom(lowerCasedCharacters));
+  };
 
+ return password.join("");
 }
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var passwordNew = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
